@@ -12,7 +12,10 @@ Thanx in advance if You want to support my work following (subscribing) to:
 My patreon page: 
 https://www.patreon.com/iamccs
 
-My playground (production company, cinema production, blog and other stuff):
+my personal website:
 
 https://www.carminecristalloscalzi.com
+
+My production cinema and digital stuff company:
+
 https://www.faidenblass.com
