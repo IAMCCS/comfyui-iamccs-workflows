@@ -25,7 +25,7 @@ Some dark fantasy stuff...
 https://www.mitologiaelfica.com
 
 and...
-If my workflows or nodes helped your setup, you can fuel the next one here ☕
+If my work helped you, and you’d like to say thanks — grab me a coffee ☕
 
 <a href="https://www.buymeacoffee.com/iamccs" target="_blank">
   <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="200" />
