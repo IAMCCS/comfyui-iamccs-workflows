@@ -1,0 +1,1656 @@
+{
+  "id": "ab19c2fc-8305-4477-a83d-c5864db4c1b3",
+  "revision": 1,
+  "last_node_id": 6027,
+  "last_link_id": 77,
+  "nodes": [
+    {
+      "id": 6013,
+      "type": "8d5a7f79-b981-4db6-9c29-60b90254b657",
+      "pos": [
+        -2942.7202524862423,
+        -72.30754064959766
+      ],
+      "size": [
+        399.1642925167871,
+        262
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            73
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            74
+          ]
+        },
+        {
+          "name": "VAE_1",
+          "type": "VAE",
+          "links": [
+            75
+          ]
+        },
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            72
+          ]
+        }
+      ],
+      "properties": {
+        "proxyWidgets": [
+          [
+            "6014",
+            "unet_name"
+          ],
+          [
+            "6",
+            "lora_name"
+          ],
+          [
+            "6",
+            "strength_model"
+          ],
+          [
+            "7",
+            "clip_name1"
+          ],
+          [
+            "7",
+            "clip_name2"
+          ],
+          [
+            "14",
+            "vae_name"
+          ],
+          [
+            "15",
+            "vae_name"
+          ]
+        ],
+        "cnr_id": "comfy-core",
+        "ver": "0.18.5",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "widgets_values": [
+        "ltx-2.3-22b-dev_transformer_only_fp8_scaled.safetensors",
+        "ltx-2.3-22b-distilled-lora-384-1.1.safetensors",
+        0.7,
+        "gemma_3_12B_it_fp8_e4m3fn.safetensors",
+        "ltx-2.3_text_projection_bf16.safetensors",
+        "ltx-2.3-22b-dev_video_vae.safetensors",
+        "ltx-2.3-22b-dev_audio_vae.safetensors"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        -2433.652804442392,
+        -128.46554073452631
+      ],
+      "size": [
+        497.199130969238,
+        344.90882742309566
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            66
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": []
+        }
+      ],
+      "title": "START IMAGE",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.3",
+        "Node name for S&R": "LoadImage",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "goya_scenario_z_1280x768_seed5699054856288111951_1777322330366.png",
+        "image"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 6017,
+      "type": "VHS_LoadAudioUpload",
+      "pos": [
+        -2979.9025164206114,
+        348.5512827153759
+      ],
+      "size": [
+        461.09874933416177,
+        204
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            47,
+            71
+          ]
+        },
+        {
+          "name": "duration",
+          "type": "FLOAT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "993082e4f2473bf4acaf06f51e33877a7eb38960",
+        "Node name for S&R": "VHS_LoadAudioUpload",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "widgets_values": {
+        "audio": "ComfyUI_00155_.mp3",
+        "start_time": 0,
+        "duration": 5,
+        "audiopreview": {
+          "params": {
+            "start_time": 0,
+            "duration": 5,
+            "filename": "ComfyUI_00155_.mp3",
+            "type": "input"
+          }
+        }
+      },
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 6026,
+      "type": "IAMCCS-SuperNodes AU+IMG2VID Exec Render",
+      "pos": [
+        -1793.281215920981,
+        -135.07562324613897
+      ],
+      "size": [
+        423.3287109375,
+        856
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 66
+        },
+        {
+          "name": "linx",
+          "shape": 7,
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "link": 76
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "model",
+          "shape": 7,
+          "type": "MODEL",
+          "link": null
+        },
+        {
+          "name": "clip",
+          "shape": 7,
+          "type": "CLIP",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        },
+        {
+          "name": "audio_vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        },
+        {
+          "name": "refresh_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "second_stage_linx",
+          "shape": 7,
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "link": null
+        },
+        {
+          "name": "stage2_model",
+          "shape": 7,
+          "type": "MODEL",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "frames_dir",
+          "type": "STRING",
+          "links": [
+            68
+          ]
+        },
+        {
+          "name": "start_dir",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "segments_rendered",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "estimated_duration_seconds",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "linx",
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "links": [
+            69
+          ]
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "IAMCCS/IAMCCS-nodes",
+        "ver": "aafd5731b483dd138c2dd3283a42994adabfd6a6",
+        "Node name for S&R": "IAMCCS-SuperNodes AU+IMG2VID Exec Render",
+        "iamccs_section_stage2": false,
+        "iamccs_section_debug": true,
+        "iamccs_section_modular": false,
+        "iamccs_section_anchor": false,
+        "iamccs_section_stitch": false,
+        "iamccs_section_audio": false,
+        "iamccs_section_sampling": false,
+        "iamccs_section_video": false,
+        "iamccs_section_prompts": true,
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "widgets_values": [
+        "▶ Mode + Second Stage",
+        "img2vid",
+        "single_best",
+        "▼ Prompting",
+        "close-up portrait of a side view person reciting a poem, profile  mouth, natural speech articulation, lips and jaw moving with spoken words, calm cinematic performance.",
+        "blurry, low quality, artifacts",
+        "▶ Video",
+        1280,
+        736,
+        "▶ Sampling",
+        8,
+        1,
+        "lcm",
+        290844039984499,
+        "fixed",
+        2.05,
+        0.95,
+        0.1,
+        "1., 0.99375, 0.9875, 0.98125, 0.975, 0.909375, 0.725, 0.421875, 0.0",
+        0.8,
+        33,
+        "▶ Audio",
+        "left_context_only",
+        0,
+        0,
+        "▶ Stitch",
+        "videoclip_audio_24fps",
+        "source",
+        "cut",
+        "ltx2_round_down",
+        "▶ Anchor",
+        "off",
+        2,
+        1,
+        "off",
+        0.18,
+        0.08,
+        "inherit_render_backend",
+        "▶ Modular",
+        "finalize_only",
+        "iamccs_gc_auimg2vid/exec_run",
+        "▼ Debug",
+        "off",
+        "seg {segment_number}/{segment_count}",
+        "off",
+        "stage2_model_if_connected",
+        "ltx-2-spatial-upscaler-x2-1.0.safetensors",
+        0,
+        1,
+        "0.909375, 0.725, 0.421875, 0.0",
+        ""
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 6025,
+      "type": "IAMCCS-SuperNodes AU+IMG2VID Exec VAE",
+      "pos": [
+        -1226.5387639813491,
+        -30.608166605453476
+      ],
+      "size": [
+        402.8619140625,
+        306
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "video_latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        },
+        {
+          "name": "linx",
+          "shape": 7,
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "link": 69
+        },
+        {
+          "name": "frames_dir",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "frames_dir"
+          },
+          "link": 68
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video_path",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "linx",
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "links": null
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            65
+          ]
+        },
+        {
+          "name": "audio_passthrough",
+          "type": "AUDIO",
+          "links": null
+        },
+        {
+          "name": "frames_dir_out",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "IAMCCS/IAMCCS-nodes",
+        "ver": "aafd5731b483dd138c2dd3283a42994adabfd6a6",
+        "Node name for S&R": "IAMCCS-SuperNodes AU+IMG2VID Exec VAE",
+        "iamccs_section_final": false,
+        "iamccs_section_decode": true,
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "widgets_values": [
+        "▼ Decode",
+        24,
+        "normal_tiled_vhs",
+        "▶ Finalize",
+        "IAMCCS/GC_AUIMG2VID_EXEC",
+        "iamccs_gc_auimg2vid/final_vae",
+        "frames",
+        "jpg",
+        95,
+        512,
+        64,
+        19,
+        "yuv420p",
+        true,
+        false,
+        ""
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 6015,
+      "type": "Label (rgthree)",
+      "pos": [
+        -3054.2631919319547,
+        -356.1936380174786
+      ],
+      "size": [
+        2933.4814453125,
+        90
+      ],
+      "flags": {
+        "allow_interaction": true
+      },
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "IAMCCS_LTX-SUPERNODES - - SET_1_(IMG+AUD2VIDEO )_V.290426",
+      "properties": {
+        "fontSize": 90,
+        "fontFamily": "Arial",
+        "fontColor": "#ffffff",
+        "textAlign": "left",
+        "backgroundColor": "transparent",
+        "padding": 0,
+        "borderRadius": 0,
+        "angle": 0,
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "color": "#fff0",
+      "bgcolor": "#fff0"
+    },
+    {
+      "id": 6027,
+      "type": "IAMCCS-SuperNodes AU+IMG2VID Exec Planner",
+      "pos": [
+        -2414.9684474319624,
+        299.3714074533978
+      ],
+      "size": [
+        425.16697195846325,
+        532
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 71
+        },
+        {
+          "name": "model",
+          "shape": 7,
+          "type": "MODEL",
+          "link": 72
+        },
+        {
+          "name": "clip",
+          "shape": 7,
+          "type": "CLIP",
+          "link": 73
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 74
+        },
+        {
+          "name": "audio_vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 75
+        },
+        {
+          "name": "linx",
+          "shape": 7,
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "plan_payload",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "planned_duration_seconds",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "total_frames",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "segment_count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "recommended_overlap_frames",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "recommended_audio_left_context_s",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "planner_chip",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "linx",
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "links": [
+            76
+          ]
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "IAMCCS/IAMCCS-nodes",
+        "ver": "aafd5731b483dd138c2dd3283a42994adabfd6a6",
+        "Node name for S&R": "IAMCCS-SuperNodes AU+IMG2VID Exec Planner",
+        "iamccs_section_planning": false,
+        "iamccs_section_timeline": false,
+        "iamccsPlannerLivePreview": "live 5.00s @ 24.00fps -> 120f unique\noverlap 9f (5s duration) | first raw 121f | cont raw 129f\naudio duration unknown until planner runs once",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "widgets_values": [
+        "▶ Timeline",
+        24,
+        5,
+        "▶ Planning",
+        "manual_segment_seconds",
+        "15sec",
+        9,
+        "up",
+        "melband_vocals_duration_math",
+        "MelBandRoformer_fp32.safetensors",
+        ""
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 6018,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        -633.4163059224527,
+        -43.877405070951006
+      ],
+      "size": [
+        719.2461959237946,
+        750.066562656182
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 65
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 47
+        },
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "993082e4f2473bf4acaf06f51e33877a7eb38960",
+        "Node name for S&R": "VHS_VideoCombine",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "widgets_values": {
+        "frame_rate": 24,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_00038-audio.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 24,
+            "workflow": "AnimateDiff_00038.png",
+            "fullpath": "E:\\ComfyUI_1\\ComfyUI-Easy-Install\\ComfyUI\\output\\AnimateDiff_00038-audio.mp4"
+          }
+        }
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    }
+  ],
+  "links": [
+    [
+      47,
+      6017,
+      0,
+      6018,
+      1,
+      "AUDIO"
+    ],
+    [
+      65,
+      6025,
+      3,
+      6018,
+      0,
+      "IMAGE"
+    ],
+    [
+      66,
+      1,
+      0,
+      6026,
+      0,
+      "IMAGE"
+    ],
+    [
+      68,
+      6026,
+      0,
+      6025,
+      4,
+      "STRING"
+    ],
+    [
+      69,
+      6026,
+      4,
+      6025,
+      3,
+      "IAMCCS_SUPERNODE_LINX"
+    ],
+    [
+      71,
+      6017,
+      0,
+      6027,
+      0,
+      "AUDIO"
+    ],
+    [
+      72,
+      6013,
+      3,
+      6027,
+      1,
+      "MODEL"
+    ],
+    [
+      73,
+      6013,
+      0,
+      6027,
+      2,
+      "CLIP"
+    ],
+    [
+      74,
+      6013,
+      1,
+      6027,
+      3,
+      "VAE"
+    ],
+    [
+      75,
+      6013,
+      2,
+      6027,
+      4,
+      "VAE"
+    ],
+    [
+      76,
+      6027,
+      7,
+      6026,
+      1,
+      "IAMCCS_SUPERNODE_LINX"
+    ]
+  ],
+  "groups": [],
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "8d5a7f79-b981-4db6-9c29-60b90254b657",
+        "version": 1,
+        "state": {
+          "lastGroupId": 0,
+          "lastNodeId": 6027,
+          "lastLinkId": 77,
+          "lastRerouteId": 0
+        },
+        "revision": 1,
+        "config": {},
+        "name": "MODELS",
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            -3306.525744279308,
+            915.6301909954916,
+            135.87890625,
+            188
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            -2671.050567514182,
+            875.6301909954916,
+            128,
+            128
+          ]
+        },
+        "inputs": [
+          {
+            "id": "ae6f4548-6f41-4eeb-81b1-7f2e096d5e53",
+            "name": "unet_name",
+            "type": "COMBO",
+            "linkIds": [
+              39
+            ],
+            "pos": [
+              -3194.646838029308,
+              939.6301909954916
+            ]
+          },
+          {
+            "id": "115ae2a1-f45e-4f21-b48a-048890c53e21",
+            "name": "lora_name",
+            "type": "COMBO",
+            "linkIds": [
+              30
+            ],
+            "pos": [
+              -3194.646838029308,
+              959.6301909954916
+            ]
+          },
+          {
+            "id": "897ac9bd-3fc5-4db3-95d1-87c06ee08a96",
+            "name": "strength_model",
+            "type": "FLOAT",
+            "linkIds": [
+              31
+            ],
+            "pos": [
+              -3194.646838029308,
+              979.6301909954916
+            ]
+          },
+          {
+            "id": "88f94d7f-bc8b-4434-9dd4-a8604095ee3c",
+            "name": "clip_name1",
+            "type": "COMBO",
+            "linkIds": [
+              32
+            ],
+            "pos": [
+              -3194.646838029308,
+              999.6301909954916
+            ]
+          },
+          {
+            "id": "a931ea15-fee5-4766-a25c-86b7c90d5797",
+            "name": "clip_name2",
+            "type": "COMBO",
+            "linkIds": [
+              33
+            ],
+            "pos": [
+              -3194.646838029308,
+              1019.6301909954916
+            ]
+          },
+          {
+            "id": "78723711-7d50-4ec6-935f-d5381c78bc89",
+            "name": "vae_name",
+            "type": "COMBO",
+            "linkIds": [
+              34
+            ],
+            "pos": [
+              -3194.646838029308,
+              1039.6301909954916
+            ]
+          },
+          {
+            "id": "b061d779-0bce-4d8e-8d9e-72a6919d8066",
+            "name": "vae_name_1",
+            "type": "COMBO",
+            "linkIds": [
+              35
+            ],
+            "pos": [
+              -3194.646838029308,
+              1059.6301909954916
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "4f8190c3-2af4-4d03-b2d6-0bfa5a16c940",
+            "name": "CLIP",
+            "type": "CLIP",
+            "linkIds": [
+              8
+            ],
+            "localized_name": "CLIP",
+            "pos": [
+              -2647.050567514182,
+              899.6301909954916
+            ]
+          },
+          {
+            "id": "14b770f4-f6a4-4c11-8e40-06ac026adc21",
+            "name": "VAE",
+            "type": "VAE",
+            "linkIds": [
+              9
+            ],
+            "localized_name": "VAE",
+            "pos": [
+              -2647.050567514182,
+              919.6301909954916
+            ]
+          },
+          {
+            "id": "7fa40fe5-c387-4895-babe-7ba6a7290140",
+            "name": "VAE_1",
+            "type": "VAE",
+            "linkIds": [
+              10
+            ],
+            "localized_name": "VAE_1",
+            "pos": [
+              -2647.050567514182,
+              939.6301909954916
+            ]
+          },
+          {
+            "id": "5f4dcdcb-6821-4e09-b289-62f451f8581e",
+            "name": "MODEL",
+            "type": "MODEL",
+            "linkIds": [
+              11
+            ],
+            "localized_name": "MODEL",
+            "pos": [
+              -2647.050567514182,
+              959.6301909954916
+            ]
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 7,
+            "type": "DualCLIPLoader",
+            "pos": [
+              -3106.050567514182,
+              854.4485645337289
+            ],
+            "size": [
+              375,
+              130
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "clip_name1",
+                "name": "clip_name1",
+                "type": "COMBO",
+                "widget": {
+                  "name": "clip_name1"
+                },
+                "link": 32
+              },
+              {
+                "localized_name": "clip_name2",
+                "name": "clip_name2",
+                "type": "COMBO",
+                "widget": {
+                  "name": "clip_name2"
+                },
+                "link": 33
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "CLIP",
+                "name": "CLIP",
+                "type": "CLIP",
+                "slot_index": 0,
+                "links": [
+                  8
+                ]
+              }
+            ],
+            "properties": {
+              "cnr_id": "comfy-core",
+              "ver": "0.16.3",
+              "Node name for S&R": "DualCLIPLoader",
+              "ue_properties": {
+                "widget_ue_connectable": {},
+                "version": "7.7",
+                "input_ue_unconnectable": {}
+              }
+            },
+            "widgets_values": [
+              "gemma_3_12B_it_fp8_e4m3fn.safetensors",
+              "ltx-2.3_text_projection_bf16.safetensors",
+              "ltxv",
+              "default"
+            ]
+          },
+          {
+            "id": 14,
+            "type": "VAELoaderKJ",
+            "pos": [
+              -3118.525744279308,
+              1058.0809347465342
+            ],
+            "size": [
+              381,
+              106
+            ],
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "vae_name",
+                "name": "vae_name",
+                "type": "COMBO",
+                "widget": {
+                  "name": "vae_name"
+                },
+                "link": 34
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "VAE",
+                "name": "VAE",
+                "type": "VAE",
+                "slot_index": 0,
+                "links": [
+                  9
+                ]
+              }
+            ],
+            "title": "VIDEO VAE",
+            "properties": {
+              "cnr_id": "comfyui-kjnodes",
+              "ver": "a9ab19d2a7933e03f72bc00103863f06b9483300",
+              "Node name for S&R": "VAELoaderKJ",
+              "ue_properties": {
+                "widget_ue_connectable": {},
+                "version": "7.7",
+                "input_ue_unconnectable": {}
+              }
+            },
+            "widgets_values": [
+              "ltx-2.3-22b-dev_video_vae.safetensors",
+              "main_device",
+              "bf16"
+            ]
+          },
+          {
+            "id": 15,
+            "type": "VAELoaderKJ",
+            "pos": [
+              -3117.219208143829,
+              1222.1957176071987
+            ],
+            "size": [
+              381,
+              106
+            ],
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "vae_name",
+                "name": "vae_name",
+                "type": "COMBO",
+                "widget": {
+                  "name": "vae_name"
+                },
+                "link": 35
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "VAE",
+                "name": "VAE",
+                "type": "VAE",
+                "slot_index": 0,
+                "links": [
+                  10
+                ]
+              }
+            ],
+            "title": "AUDIO VAE",
+            "properties": {
+              "cnr_id": "comfyui-kjnodes",
+              "ver": "a9ab19d2a7933e03f72bc00103863f06b9483300",
+              "Node name for S&R": "VAELoaderKJ",
+              "ue_properties": {
+                "widget_ue_connectable": {},
+                "version": "7.7",
+                "input_ue_unconnectable": {}
+              }
+            },
+            "widgets_values": [
+              "ltx-2.3-22b-dev_audio_vae.safetensors",
+              "main_device",
+              "bf16"
+            ]
+          },
+          {
+            "id": 6,
+            "type": "LoraLoaderModelOnly",
+            "pos": [
+              -3127.191213025714,
+              696.3724817017164
+            ],
+            "size": [
+              360,
+              82
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 38
+              },
+              {
+                "localized_name": "lora_name",
+                "name": "lora_name",
+                "type": "COMBO",
+                "widget": {
+                  "name": "lora_name"
+                },
+                "link": 30
+              },
+              {
+                "localized_name": "strength_model",
+                "name": "strength_model",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "strength_model"
+                },
+                "link": 31
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "slot_index": 0,
+                "links": [
+                  11
+                ]
+              }
+            ],
+            "properties": {
+              "cnr_id": "comfy-core",
+              "ver": "0.16.3",
+              "Node name for S&R": "LoraLoaderModelOnly",
+              "ue_properties": {
+                "widget_ue_connectable": {},
+                "version": "7.7",
+                "input_ue_unconnectable": {}
+              }
+            },
+            "widgets_values": [
+              "ltx-2.3-22b-distilled-lora-384-1.1.safetensors",
+              0.7
+            ]
+          },
+          {
+            "id": 6014,
+            "type": "UNETLoader",
+            "pos": [
+              -2995.8597449605318,
+              550.386018078995
+            ],
+            "size": [
+              270,
+              82
+            ],
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "unet_name",
+                "name": "unet_name",
+                "type": "COMBO",
+                "widget": {
+                  "name": "unet_name"
+                },
+                "link": 39
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [
+                  38
+                ]
+              }
+            ],
+            "properties": {
+              "cnr_id": "comfy-core",
+              "ver": "0.18.5",
+              "Node name for S&R": "UNETLoader",
+              "ue_properties": {
+                "widget_ue_connectable": {},
+                "input_ue_unconnectable": {},
+                "version": "7.7"
+              }
+            },
+            "widgets_values": [
+              "ltx-2.3-22b-dev_transformer_only_fp8_scaled.safetensors",
+              "default"
+            ]
+          }
+        ],
+        "groups": [],
+        "links": [
+          {
+            "id": 8,
+            "origin_id": 7,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "CLIP"
+          },
+          {
+            "id": 9,
+            "origin_id": 14,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 1,
+            "type": "VAE"
+          },
+          {
+            "id": 10,
+            "origin_id": 15,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 2,
+            "type": "VAE"
+          },
+          {
+            "id": 11,
+            "origin_id": 6,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 3,
+            "type": "MODEL"
+          },
+          {
+            "id": 30,
+            "origin_id": -10,
+            "origin_slot": 1,
+            "target_id": 6,
+            "target_slot": 1,
+            "type": "COMBO"
+          },
+          {
+            "id": 31,
+            "origin_id": -10,
+            "origin_slot": 2,
+            "target_id": 6,
+            "target_slot": 2,
+            "type": "FLOAT"
+          },
+          {
+            "id": 32,
+            "origin_id": -10,
+            "origin_slot": 3,
+            "target_id": 7,
+            "target_slot": 0,
+            "type": "COMBO"
+          },
+          {
+            "id": 33,
+            "origin_id": -10,
+            "origin_slot": 4,
+            "target_id": 7,
+            "target_slot": 1,
+            "type": "COMBO"
+          },
+          {
+            "id": 34,
+            "origin_id": -10,
+            "origin_slot": 5,
+            "target_id": 14,
+            "target_slot": 0,
+            "type": "COMBO"
+          },
+          {
+            "id": 35,
+            "origin_id": -10,
+            "origin_slot": 6,
+            "target_id": 15,
+            "target_slot": 0,
+            "type": "COMBO"
+          },
+          {
+            "id": 38,
+            "origin_id": 6014,
+            "origin_slot": 0,
+            "target_id": 6,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 39,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 6014,
+            "target_slot": 0,
+            "type": "COMBO"
+          }
+        ],
+        "extra": {
+          "ue_links": [],
+          "links_added_by_ue": []
+        }
+      }
+    ]
+  },
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.21435888100000372,
+      "offset": [
+        8023.184756534673,
+        1545.8493707708476
+      ]
+    },
+    "workflowRendererVersion": "LG",
+    "iamccs_annotations_multi": {
+      "version": 2,
+      "graphs": {
+        "00000000-0000-0000-0000-000000000000": {
+          "version": 2,
+          "enabled": false,
+          "color": "#ff4444",
+          "width": 7,
+          "opacity": 1,
+          "eraser": false,
+          "constantScreen": false,
+          "dashed": false,
+          "hidden": false,
+          "penOnly": false,
+          "hiDPIx2": false,
+          "pinMode": false,
+          "tool": "draw",
+          "selectMode": "rect",
+          "transformMode": "fixed",
+          "widthDraw": 7,
+          "widthErase": 48,
+          "opacityDraw": 1,
+          "opacityErase": 1,
+          "textFontFamily": "Arial",
+          "textFontSize": 28,
+          "textColor": "#111111",
+          "textFontWeight": "normal",
+          "textFontStyle": "normal",
+          "textUnderline": false,
+          "paths": [],
+          "layers": [
+            {
+              "name": "Layer 1",
+              "visible": true,
+              "locked": false,
+              "paths": [],
+              "style": {
+                "color": "#ff4444",
+                "dashed": false,
+                "lastLinkId": 44,
+                "widthErase": 48,
+                "opacityDraw": 1,
+                "opacityErase": 1
+              }
+            }
+          ],
+          "currentLayerIdx": 0,
+          "stickers": [],
+          "stickerStyle": {
+            "frameColor": "#ffffff",
+            "paddingPx": 10,
+            "borderWidthPx": 2,
+            "shadow": true,
+            "shadowStrength": 12
+          }
+        },
+        "ab19c2fc-8305-4477-a83d-c5864db4c1b3": {
+          "version": 2,
+          "enabled": false,
+          "color": "#ff4444",
+          "width": 7,
+          "opacity": 1,
+          "eraser": false,
+          "constantScreen": false,
+          "dashed": false,
+          "hidden": false,
+          "penOnly": false,
+          "hiDPIx2": false,
+          "pinMode": false,
+          "tool": "draw",
+          "selectMode": "rect",
+          "transformMode": "fixed",
+          "widthDraw": 7,
+          "widthErase": 48,
+          "opacityDraw": 1,
+          "opacityErase": 1,
+          "textFontFamily": "Arial",
+          "textFontSize": 28,
+          "textColor": "#111111",
+          "textFontWeight": "normal",
+          "textFontStyle": "normal",
+          "textUnderline": false,
+          "paths": [],
+          "layers": [
+            {
+              "name": "Layer 1",
+              "kind": "draw",
+              "visible": true,
+              "locked": false,
+              "paths": [],
+              "style": {
+                "color": "#ff4444",
+                "dashed": false,
+                "widthDraw": 7,
+                "widthErase": 48,
+                "opacityDraw": 1,
+                "opacityErase": 1
+              }
+            }
+          ],
+          "currentLayerIdx": 0,
+          "stickers": [],
+          "stickerStyle": {
+            "frameColor": "#ffffff",
+            "paddingPx": 10,
+            "borderWidthPx": 2,
+            "shadow": true,
+            "shadowStrength": 12
+          }
+        },
+        "8d5a7f79-b981-4db6-9c29-60b90254b657": {
+          "version": 2,
+          "enabled": false,
+          "color": "#ff4444",
+          "width": 7,
+          "opacity": 1,
+          "eraser": false,
+          "constantScreen": false,
+          "dashed": false,
+          "hidden": false,
+          "penOnly": false,
+          "hiDPIx2": false,
+          "pinMode": false,
+          "tool": "draw",
+          "selectMode": "rect",
+          "transformMode": "fixed",
+          "widthDraw": 7,
+          "widthErase": 48,
+          "opacityDraw": 1,
+          "opacityErase": 1,
+          "textFontFamily": "Arial",
+          "textFontSize": 28,
+          "textColor": "#111111",
+          "textFontWeight": "normal",
+          "textFontStyle": "normal",
+          "textUnderline": false,
+          "paths": [],
+          "layers": [
+            {
+              "name": "Layer 1",
+              "kind": "draw",
+              "visible": true,
+              "locked": false,
+              "paths": [],
+              "style": {
+                "color": "#ff4444",
+                "dashed": false,
+                "widthDraw": 7,
+                "widthErase": 48,
+                "opacityDraw": 1,
+                "opacityErase": 1
+              }
+            }
+          ],
+          "currentLayerIdx": 0,
+          "stickers": [],
+          "stickerStyle": {
+            "frameColor": "#ffffff",
+            "paddingPx": 10,
+            "borderWidthPx": 2,
+            "shadow": true,
+            "shadowStrength": 12
+          }
+        }
+      }
+    },
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "frontendVersion": "1.44.13",
+    "VHS_latentpreview": true,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "iamccs_annotations": {
+      "version": 2,
+      "enabled": false,
+      "color": "#ff4444",
+      "width": 7,
+      "opacity": 1,
+      "eraser": false,
+      "constantScreen": false,
+      "dashed": false,
+      "hidden": false,
+      "penOnly": false,
+      "hiDPIx2": false,
+      "pinMode": false,
+      "tool": "draw",
+      "selectMode": "rect",
+      "transformMode": "fixed",
+      "widthDraw": 7,
+      "widthErase": 48,
+      "opacityDraw": 1,
+      "opacityErase": 1,
+      "textFontFamily": "Arial",
+      "textFontSize": 28,
+      "textColor": "#111111",
+      "textFontWeight": "normal",
+      "textFontStyle": "normal",
+      "textUnderline": false,
+      "paths": [],
+      "layers": [
+        {
+          "name": "Layer 1",
+          "kind": "draw",
+          "visible": true,
+          "locked": false,
+          "paths": [],
+          "style": {
+            "color": "#ff4444",
+            "dashed": false,
+            "widthDraw": 7,
+            "widthErase": 48,
+            "opacityDraw": 1,
+            "opacityErase": 1
+          }
+        }
+      ],
+      "currentLayerIdx": 0,
+      "stickers": [],
+      "stickerStyle": {
+        "frameColor": "#ffffff",
+        "paddingPx": 10,
+        "borderWidthPx": 2,
+        "shadow": true,
+        "shadowStrength": 12
+      }
+    }
+  },
+  "version": 0.4
+}
