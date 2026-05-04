@@ -1,0 +1,1461 @@
+{
+  "id": "ab19c2fc-8305-4477-a83d-c5864db4c1b3",
+  "revision": 3,
+  "last_node_id": 6050,
+  "last_link_id": 168,
+  "nodes": [
+    {
+      "id": 6034,
+      "type": "VAELoaderKJ",
+      "pos": [
+        -3983.676285699621,
+        803.9396306267006
+      ],
+      "size": [
+        381,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            159,
+            166
+          ]
+        }
+      ],
+      "title": "AUDIO VAE",
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "a9ab19d2a7933e03f72bc00103863f06b9483300",
+        "Node name for S&R": "VAELoaderKJ",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "ltx-2.3-22b-dev_audio_vae.safetensors",
+        "main_device",
+        "bf16"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 6033,
+      "type": "VAELoaderKJ",
+      "pos": [
+        -3989.8704448890066,
+        630.9522748546517
+      ],
+      "size": [
+        381,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            158,
+            165
+          ]
+        }
+      ],
+      "title": "VIDEO VAE",
+      "properties": {
+        "cnr_id": "comfyui-kjnodes",
+        "ver": "a9ab19d2a7933e03f72bc00103863f06b9483300",
+        "Node name for S&R": "VAELoaderKJ",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "ltx-2.3-22b-dev_video_vae.safetensors",
+        "main_device",
+        "bf16"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 6040,
+      "type": "Note",
+      "pos": [
+        -3537.0475693503085,
+        -407.26160013602305
+      ],
+      "size": [
+        998.5961347595653,
+        370.24521207552175
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Wrapper requirements",
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "IAMCCS SuperNodes - Minimal Startup Guide\n\nRequired:\n- IAMCCS-nodes installed.\n- LTXV model, text encoder/CLIP, Video VAE, Audio VAE.\n- Video combine support and audio duration helpers.\n- MelBand RoFormer model if using vocal-focused lipsync.\n\nFirst test:\n1. Planner: modern pipeline + single generation + melband_vocals_duration_math.\n2. Render: audio+image2video.\n3. VAE: normal_tiled_iamccs.\n4. Use a clear face/mouth image and a simple speech/singing prompt.\n\nNext tests:\n- 2 segments before 3 or loop.\n- Legacy pipeline only if you want to compare the older behavior.\n- low_ram/very_low_ram only when memory requires it.\n\nIf lipsync is missing, check:\n- mouth visibility in the image;\n- Audio Mode;\n- FPS consistency;\n- final audio from Exec VAE audio_passthrough;\n- image_strength too high/low for the shot.\n\nCode by Carmine Cristallo Scalzi AI research (IAMCCS) patreon.com/IAMCCS"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 6041,
+      "type": "IAMCCS_LTX2_LoRAStackModelIO",
+      "pos": [
+        -3973.4464001543824,
+        197.01263684341959
+      ],
+      "size": [
+        364.94514263042083,
+        198
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 102
+        },
+        {
+          "name": "lora",
+          "shape": 7,
+          "type": "LORA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            156,
+            163
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "IAMCCS/IAMCCS-nodes",
+        "ver": "0.18.5",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "cnr_id": "comfy-core",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "widgets_values": [
+        "ltx-2.3-22b-distilled-lora-384-1.1.safetensors",
+        0.7,
+        "ltx-2-19b-lora-camera-control-static.safetensors",
+        0.6,
+        "no",
+        0
+      ],
+      "color": "#232",
+      "bgcolor": "#353",
+      "shape": 1
+    },
+    {
+      "id": 6032,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -3994.0610177522335,
+        450.45418696967585
+      ],
+      "size": [
+        375,
+        130
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            157,
+            164
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.3",
+        "Node name for S&R": "DualCLIPLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "gemma_3_12B_it_fp8_e4m3fn.safetensors",
+        "ltx-2.3_text_projection_bf16.safetensors",
+        "ltxv",
+        "default"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        -2458.8876044871254,
+        -392.07923994495695
+      ],
+      "size": [
+        835.4099261774854,
+        436.60677864706474
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            161
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": []
+        }
+      ],
+      "title": "START IMAGE",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.16.3",
+        "Node name for S&R": "LoadImage",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "goya_scenario_z_1280x720_seed8748994723876452547_1776862212447.png",
+        "image"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 6049,
+      "type": "IAMCCS-SuperNodes AU+IMG2VID Exec Planner",
+      "pos": [
+        -3361.4115109434097,
+        397.4604656137823
+      ],
+      "size": [
+        426.2544921875,
+        530
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 155
+        },
+        {
+          "name": "model",
+          "shape": 7,
+          "type": "MODEL",
+          "link": 156
+        },
+        {
+          "name": "clip",
+          "shape": 7,
+          "type": "CLIP",
+          "link": 157
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 158
+        },
+        {
+          "name": "audio_vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 159
+        },
+        {
+          "name": "linx",
+          "shape": 7,
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "plan (direct)",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "duration",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "frames",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "segments",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "first frames",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "left ctx",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "summary",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "linx",
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "links": [
+            162
+          ]
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {}
+        },
+        "aux_id": "IAMCCS/IAMCCS-nodes",
+        "ver": "8ba4abb4d372998123633f1cb4284556d09d3b99",
+        "Node name for S&R": "IAMCCS-SuperNodes AU+IMG2VID Exec Planner",
+        "iamccs_section_audio": true,
+        "iamccs_section_route": true,
+        "iamccsPlannerLivePreview": "live 5.00s @ 25.00fps -> 125f unique\noverlap 9f (manual/default) | first raw 129f | cont raw 137f\naudio duration unknown until planner runs once"
+      },
+      "widgets_values": [
+        null,
+        "modern pipeline",
+        "single generation",
+        5,
+        1,
+        10,
+        25,
+        null,
+        "melband_vocals_duration_math",
+        "MelBandRoformer_fp32.safetensors",
+        "manual_segment_seconds",
+        "10sec",
+        9,
+        "up",
+        "single generation (duration only)",
+        "",
+        false
+      ]
+    },
+    {
+      "id": 6017,
+      "type": "VHS_LoadAudioUpload",
+      "pos": [
+        -3398.141022768049,
+        76.58604336630022
+      ],
+      "size": [
+        461.09874933416177,
+        204
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            155
+          ]
+        },
+        {
+          "name": "duration",
+          "type": "FLOAT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "993082e4f2473bf4acaf06f51e33877a7eb38960",
+        "Node name for S&R": "VHS_LoadAudioUpload",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "widgets_values": {
+        "audio": "ComfyUI_00155_.mp3",
+        "start_time": 0,
+        "duration": 5,
+        "audiopreview": {
+          "params": {
+            "start_time": 0,
+            "duration": 5,
+            "filename": "ComfyUI_00155_.mp3",
+            "type": "input"
+          }
+        }
+      },
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 6050,
+      "type": "IAMCCS-SuperNodes AU+IMG2VID Exec Render",
+      "pos": [
+        -2275.5892215080935,
+        141.2091494408456
+      ],
+      "size": [
+        423.3287109375,
+        1302
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 161
+        },
+        {
+          "name": "linx",
+          "shape": 7,
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "link": 162
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "model",
+          "shape": 7,
+          "type": "MODEL",
+          "link": 163
+        },
+        {
+          "name": "clip",
+          "shape": 7,
+          "type": "CLIP",
+          "link": 164
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 165
+        },
+        {
+          "name": "audio_vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 166
+        },
+        {
+          "name": "refresh_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "second_stage_linx",
+          "shape": 7,
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "link": null
+        },
+        {
+          "name": "stage2_model",
+          "shape": 7,
+          "type": "MODEL",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "frames_dir",
+          "type": "STRING",
+          "links": [
+            167
+          ]
+        },
+        {
+          "name": "start_dir",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "segments_rendered",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "estimated_duration_seconds",
+          "type": "FLOAT",
+          "links": null
+        },
+        {
+          "name": "linx",
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "links": [
+            168
+          ]
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {}
+        },
+        "aux_id": "IAMCCS/IAMCCS-nodes",
+        "ver": "8ba4abb4d372998123633f1cb4284556d09d3b99",
+        "Node name for S&R": "IAMCCS-SuperNodes AU+IMG2VID Exec Render",
+        "iamccs_section_stage2": false,
+        "iamccs_section_latent_refresh": false,
+        "iamccs_section_audio_context": true,
+        "iamccs_section_transition": true,
+        "iamccs_section_sampling": true,
+        "iamccs_section_video": true,
+        "iamccs_section_prompts": true,
+        "iamccs_section_generation": true,
+        "iamccs_last_generation_type": "text+audio2video",
+        "iamccs_generation_defaults_applied": true
+      },
+      "widgets_values": [
+        null,
+        "text+audio2video",
+        "custom",
+        10,
+        25,
+        "t2v",
+        "single_best",
+        null,
+        "akira cartoon studio ghibli style talks to the camera while a skyscrapper behind him is falling, anime, amaing quality, cinematic",
+        "blurry, low quality, artifacts",
+        null,
+        1280,
+        736,
+        null,
+        8,
+        1,
+        "euler",
+        60189470949892,
+        "randomize",
+        2.05,
+        0.95,
+        0.1,
+        true,
+        "1., 0.99375, 0.9875, 0.98125, 0.975, 0.909375, 0.725, 0.421875, 0.0",
+        0,
+        35,
+        null,
+        "left_context_only",
+        0.25,
+        0,
+        null,
+        "custom",
+        "source",
+        "cut",
+        "none",
+        "none",
+        0.25,
+        null,
+        "off",
+        2,
+        0,
+        "off",
+        0,
+        0,
+        "normal_tiled_iamccs",
+        "finalize_only",
+        "iamccs_gc_auimg2vid/exec_run",
+        "off",
+        "seg {segment_number}/{segment_count}",
+        null,
+        "off",
+        "stage2_model_if_connected",
+        "ltx-2.3-spatial-upscaler-x2-1.0.safetensors",
+        0,
+        1,
+        "0.8025, 0.6332, 0.3425, 0.0",
+        "input_audio_t2v",
+        false,
+        1,
+        "",
+        false
+      ]
+    },
+    {
+      "id": 6044,
+      "type": "IAMCCS-SuperNodes AU+IMG2VID Exec VAE",
+      "pos": [
+        -1307.5186403210407,
+        131.35184774248475
+      ],
+      "size": [
+        402.8619140625,
+        402
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "video_latent",
+          "shape": 7,
+          "type": "LATENT",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        },
+        {
+          "name": "linx",
+          "shape": 7,
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "link": 168
+        },
+        {
+          "name": "frames_dir",
+          "shape": 7,
+          "type": "STRING",
+          "widget": {
+            "name": "frames_dir"
+          },
+          "link": 167
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video_path",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "linx",
+          "type": "IAMCCS_SUPERNODE_LINX",
+          "links": null
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            125
+          ]
+        },
+        {
+          "name": "audio_passthrough",
+          "type": "AUDIO",
+          "links": [
+            126
+          ]
+        },
+        {
+          "name": "frames_dir_out",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "IAMCCS/IAMCCS-nodes",
+        "ver": "8ba4abb4d372998123633f1cb4284556d09d3b99",
+        "Node name for S&R": "IAMCCS-SuperNodes AU+IMG2VID Exec VAE",
+        "iamccs_section_output": false,
+        "iamccs_section_mode": true,
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        },
+        "iamccs_legacy_trim_default_applied_for_backend": "legacy_two_segments"
+      },
+      "widgets_values": [
+        null,
+        "normal_tiled_iamccs",
+        512,
+        64,
+        256,
+        32,
+        false,
+        25,
+        "frames",
+        "png",
+        95,
+        "iamccs_gc_auimg2vid/final_vae",
+        "IAMCCS/GC_AUIMG2VID_EXEC",
+        19,
+        "yuv420p",
+        true,
+        false,
+        false,
+        false,
+        null,
+        "custom",
+        null
+      ]
+    },
+    {
+      "id": 6018,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        -1757.5011600912992,
+        640.3349168981307
+      ],
+      "size": [
+        857.579232668779,
+        829.6080587845479
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 125
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 126
+        },
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "993082e4f2473bf4acaf06f51e33877a7eb38960",
+        "Node name for S&R": "VHS_VideoCombine",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "widgets_values": {
+        "frame_rate": 24,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_00093-audio.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 24,
+            "workflow": "AnimateDiff_00093.png",
+            "fullpath": "E:\\ComfyUI_1\\ComfyUI-Easy-Install\\ComfyUI\\output\\AnimateDiff_00093-audio.mp4"
+          }
+        }
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 6036,
+      "type": "Label (rgthree)",
+      "pos": [
+        -2918.816038501527,
+        -677.5016046173947
+      ],
+      "size": [
+        875.302734375,
+        90
+      ],
+      "flags": {
+        "allow_interaction": true
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "patreon.com/IAMCCS",
+      "properties": {
+        "fontSize": 90,
+        "fontFamily": "Arial",
+        "fontColor": "white",
+        "textAlign": "left",
+        "backgroundColor": "transparent",
+        "padding": 0,
+        "borderRadius": 0,
+        "angle": 0,
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "color": "#fff0",
+      "bgcolor": "#fff0"
+    },
+    {
+      "id": 6037,
+      "type": "Note",
+      "pos": [
+        -2802.8646100878896,
+        690.6195868696965
+      ],
+      "size": [
+        460.52698565206174,
+        524.0914751065266
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Exec Planner - instructions",
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "IAMCCS Exec Planner - Quick Start\n\nUse this node for audio-driven generations.\n\n1. Choose Pipeline Family:\n- modern pipeline: recommended default.\n- legacy exact pipeline: alternate older route; useful for comparison or when it gives better motion/lipsync.\n\n2. Choose Pipeline Shape:\n- single generation: first test and shortest setup.\n- 2 segments: recommended first segmented test.\n- 3 segments: longer controlled generation.\n- loop / 4+ segments: long audio or songs.\n\n3. Timing:\n- FPS is passed to Render and VAE through LINX.\n- single generation uses Duration (s).\n- segmented routes use Segments or Seconds / Segment.\n- Overlap Frames default: 9. Try 12-17 only if the join is too abrupt.\n\n4. Audio Mode:\n- melband_vocals_duration_math: best for speech/singing lipsync.\n- raw_audio_only: keeps full audio/music; useful for music videos, but lipsync may follow instruments if vocals are not isolated.\n\ntext+audio2video uses single generation.\nFinal audio is passed as raw/full audio through Exec VAE audio_passthrough.\n\nCode by Carmine Cristallo Scalzi AI research (IAMCCS) patreon.com/IAMCCS"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 6015,
+      "type": "Label (rgthree)",
+      "pos": [
+        -3456.855741148592,
+        -769.5778135608422
+      ],
+      "size": [
+        2055.8056640625,
+        90
+      ],
+      "flags": {
+        "allow_interaction": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "IAMCCS_LTX-SUPERNODES - - SET_1_V.040526",
+      "properties": {
+        "fontSize": 90,
+        "fontFamily": "Arial",
+        "fontColor": "red",
+        "textAlign": "left",
+        "backgroundColor": "transparent",
+        "padding": 0,
+        "borderRadius": 0,
+        "angle": 0,
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "color": "#fff0",
+      "bgcolor": "#fff0"
+    },
+    {
+      "id": 6035,
+      "type": "UNETLoader",
+      "pos": [
+        -3958.6762596698777,
+        63.5541696938453
+      ],
+      "size": [
+        317.22222900390625,
+        89.77777099609375
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            102
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.18.5",
+        "Node name for S&R": "UNETLoader",
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "input_ue_unconnectable": {},
+          "version": "7.7"
+        }
+      },
+      "widgets_values": [
+        "ltx-2.3-22b-dev_transformer_only_fp8_scaled.safetensors",
+        "default"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 6038,
+      "type": "Note",
+      "pos": [
+        -2821.5776842306727,
+        146.888362821741
+      ],
+      "size": [
+        476.486013123785,
+        467.0117643047313
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Exec Render - instructions",
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "IAMCCS Exec Render - Quick Start\n\nThis is the generation node.\n\nGeneration Type:\n- audio+image2video: audio-driven image animation. Use the Planner to choose modern/legacy and single/segments/loop.\n- text+audio2video: audio-driven text-to-video. Single generation only.\n- img2video: image-to-video without input-audio driving.\n- text2video: text-to-video without input-audio driving.\n\nRecommended starting values:\n- width/height: 1280x720 default; LTX may internally round height to 736.\n- steps: 8.\n- cfg: 1.0.\n- image_strength: 0.9 default. Use 1.0 for stronger image fidelity, 0.8 for more motion.\n- image_compression: 33-35.\n- Second Stage: off.\n- Latent Refresh: off/beta.\n\nFor segmented joins:\n- keep Stitch custom + cut first.\n- if the join is visible, try Color Match = luma_only, strength 0.15-0.25.\n- adjust Overlap Frames in the Planner, not here.\n\n\nCode by Carmine Cristallo Scalzi AI research (IAMCCS) patreon.com/IAMCCS"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 6039,
+      "type": "Note",
+      "pos": [
+        -1807.8233346898767,
+        125.16002974685617
+      ],
+      "size": [
+        420.40838505276747,
+        355.1829489099564
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Exec VAE - instructions",
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.7",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "IAMCCS Exec VAE - Quick Start\n\nChoose output/decode mode here.\n\nVAE Mode:\n- normal_tiled_iamccs: recommended default and best first test.\n- high_vram: faster/direct decode if you have enough VRAM.\n- low_ram: slower disk-assisted route.\n- very_low_ram: slowest/safest low-memory route.\n\nFor segmented/loop generations:\n- normal/high usually keep the normal route.\n- low/very_low use disk decode. In the log you should see low_ram_disk or very_low_ram_disk.\n\nOutput:\n- Frame Rate should match the Planner FPS.\n- CRF 18-20 is a good quality range.\n- trim_to_audio can be enabled if the final video must end exactly with the audio.\n- Final audio should come from LINX/audio_passthrough.\n\n\nCode by Carmine Cristallo Scalzi AI research (IAMCCS) patreon.com/IAMCCS"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      102,
+      6035,
+      0,
+      6041,
+      0,
+      "MODEL"
+    ],
+    [
+      125,
+      6044,
+      3,
+      6018,
+      0,
+      "IMAGE"
+    ],
+    [
+      126,
+      6044,
+      4,
+      6018,
+      1,
+      "AUDIO"
+    ],
+    [
+      155,
+      6017,
+      0,
+      6049,
+      0,
+      "AUDIO"
+    ],
+    [
+      156,
+      6041,
+      0,
+      6049,
+      1,
+      "MODEL"
+    ],
+    [
+      157,
+      6032,
+      0,
+      6049,
+      2,
+      "CLIP"
+    ],
+    [
+      158,
+      6033,
+      0,
+      6049,
+      3,
+      "VAE"
+    ],
+    [
+      159,
+      6034,
+      0,
+      6049,
+      4,
+      "VAE"
+    ],
+    [
+      161,
+      1,
+      0,
+      6050,
+      0,
+      "IMAGE"
+    ],
+    [
+      162,
+      6049,
+      7,
+      6050,
+      1,
+      "IAMCCS_SUPERNODE_LINX"
+    ],
+    [
+      163,
+      6041,
+      0,
+      6050,
+      3,
+      "MODEL"
+    ],
+    [
+      164,
+      6032,
+      0,
+      6050,
+      4,
+      "CLIP"
+    ],
+    [
+      165,
+      6033,
+      0,
+      6050,
+      5,
+      "VAE"
+    ],
+    [
+      166,
+      6034,
+      0,
+      6050,
+      6,
+      "VAE"
+    ],
+    [
+      167,
+      6050,
+      0,
+      6044,
+      4,
+      "STRING"
+    ],
+    [
+      168,
+      6050,
+      4,
+      6044,
+      3,
+      "IAMCCS_SUPERNODE_LINX"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "models",
+      "bounding": [
+        -4036.3305933515417,
+        46.60278820802004,
+        485.02823287058936,
+        905.2439835610481
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.21435888100000372,
+      "offset": [
+        8023.184756534673,
+        1545.8493707708476
+      ]
+    },
+    "workflowRendererVersion": "LG",
+    "iamccs_annotations_multi": {
+      "version": 2,
+      "graphs": {
+        "00000000-0000-0000-0000-000000000000": {
+          "version": 2,
+          "enabled": false,
+          "color": "#ff4444",
+          "width": 7,
+          "opacity": 1,
+          "eraser": false,
+          "constantScreen": false,
+          "dashed": false,
+          "hidden": false,
+          "penOnly": false,
+          "hiDPIx2": false,
+          "pinMode": false,
+          "tool": "draw",
+          "selectMode": "rect",
+          "transformMode": "fixed",
+          "widthDraw": 7,
+          "widthErase": 48,
+          "opacityDraw": 1,
+          "opacityErase": 1,
+          "textFontFamily": "Arial",
+          "textFontSize": 28,
+          "textColor": "#111111",
+          "textFontWeight": "normal",
+          "textFontStyle": "normal",
+          "textUnderline": false,
+          "paths": [],
+          "layers": [
+            {
+              "name": "Layer 1",
+              "visible": true,
+              "locked": false,
+              "paths": [],
+              "style": {
+                "color": "#ff4444",
+                "dashed": false,
+                "lastLinkId": 44,
+                "widthErase": 48,
+                "opacityDraw": 1,
+                "opacityErase": 1
+              }
+            }
+          ],
+          "currentLayerIdx": 0,
+          "stickers": [],
+          "stickerStyle": {
+            "frameColor": "#ffffff",
+            "paddingPx": 10,
+            "borderWidthPx": 2,
+            "shadow": true,
+            "shadowStrength": 12
+          }
+        },
+        "ab19c2fc-8305-4477-a83d-c5864db4c1b3": {
+          "version": 2,
+          "enabled": false,
+          "color": "#ff4444",
+          "width": 7,
+          "opacity": 1,
+          "eraser": false,
+          "constantScreen": false,
+          "dashed": false,
+          "hidden": false,
+          "penOnly": false,
+          "hiDPIx2": false,
+          "pinMode": false,
+          "tool": "draw",
+          "selectMode": "rect",
+          "transformMode": "fixed",
+          "widthDraw": 7,
+          "widthErase": 48,
+          "opacityDraw": 1,
+          "opacityErase": 1,
+          "textFontFamily": "Arial",
+          "textFontSize": 28,
+          "textColor": "#111111",
+          "textFontWeight": "normal",
+          "textFontStyle": "normal",
+          "textUnderline": false,
+          "paths": [],
+          "layers": [
+            {
+              "name": "Layer 1",
+              "kind": "draw",
+              "visible": true,
+              "locked": false,
+              "paths": [],
+              "style": {
+                "color": "#ff4444",
+                "dashed": false,
+                "widthDraw": 7,
+                "widthErase": 48,
+                "opacityDraw": 1,
+                "opacityErase": 1
+              }
+            }
+          ],
+          "currentLayerIdx": 0,
+          "stickers": [],
+          "stickerStyle": {
+            "frameColor": "#ffffff",
+            "paddingPx": 10,
+            "borderWidthPx": 2,
+            "shadow": true,
+            "shadowStrength": 12
+          }
+        },
+        "8d5a7f79-b981-4db6-9c29-60b90254b657": {
+          "version": 2,
+          "enabled": false,
+          "color": "#ff4444",
+          "width": 7,
+          "opacity": 1,
+          "eraser": false,
+          "constantScreen": false,
+          "dashed": false,
+          "hidden": false,
+          "penOnly": false,
+          "hiDPIx2": false,
+          "pinMode": false,
+          "tool": "draw",
+          "selectMode": "rect",
+          "transformMode": "fixed",
+          "widthDraw": 7,
+          "widthErase": 48,
+          "opacityDraw": 1,
+          "opacityErase": 1,
+          "textFontFamily": "Arial",
+          "textFontSize": 28,
+          "textColor": "#111111",
+          "textFontWeight": "normal",
+          "textFontStyle": "normal",
+          "textUnderline": false,
+          "paths": [],
+          "layers": [
+            {
+              "name": "Layer 1",
+              "kind": "draw",
+              "visible": true,
+              "locked": false,
+              "paths": [],
+              "style": {
+                "color": "#ff4444",
+                "dashed": false,
+                "widthDraw": 7,
+                "widthErase": 48,
+                "opacityDraw": 1,
+                "opacityErase": 1
+              }
+            }
+          ],
+          "currentLayerIdx": 0,
+          "stickers": [],
+          "stickerStyle": {
+            "frameColor": "#ffffff",
+            "paddingPx": 10,
+            "borderWidthPx": 2,
+            "shadow": true,
+            "shadowStrength": 12
+          }
+        }
+      }
+    },
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "frontendVersion": "1.44.15",
+    "VHS_latentpreview": true,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "iamccs_annotations": {
+      "version": 2,
+      "enabled": false,
+      "color": "#ff4444",
+      "width": 7,
+      "opacity": 1,
+      "eraser": false,
+      "constantScreen": false,
+      "dashed": false,
+      "hidden": false,
+      "penOnly": false,
+      "hiDPIx2": false,
+      "pinMode": false,
+      "tool": "draw",
+      "selectMode": "rect",
+      "transformMode": "fixed",
+      "widthDraw": 7,
+      "widthErase": 48,
+      "opacityDraw": 1,
+      "opacityErase": 1,
+      "textFontFamily": "Arial",
+      "textFontSize": 28,
+      "textColor": "#111111",
+      "textFontWeight": "normal",
+      "textFontStyle": "normal",
+      "textUnderline": false,
+      "paths": [],
+      "layers": [
+        {
+          "name": "Layer 1",
+          "kind": "draw",
+          "visible": true,
+          "locked": false,
+          "paths": [],
+          "style": {
+            "color": "#ff4444",
+            "dashed": false,
+            "widthDraw": 7,
+            "widthErase": 48,
+            "opacityDraw": 1,
+            "opacityErase": 1
+          }
+        }
+      ],
+      "currentLayerIdx": 0,
+      "stickers": [],
+      "stickerStyle": {
+        "frameColor": "#ffffff",
+        "paddingPx": 10,
+        "borderWidthPx": 2,
+        "shadow": true,
+        "shadowStrength": 12
+      }
+    }
+  },
+  "version": 0.4
+}
